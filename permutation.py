@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import itertools
 
 
@@ -10,7 +12,6 @@ def duplicate_permutation(iterable1, iterable2, r=None):
     for indices in itertools.product(range(2), repeat=r):
         if indices.count(0) == len(pool1):
             zeros = tuple(i for i in range(len(indices)) if indices[i] == 0)
-            # ones = tuple(i for i in range(len(indices)) if indices[i] == 1)
             bst_lis = []
             pivot_1 = 0
             pivot_2 = 0

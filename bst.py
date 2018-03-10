@@ -34,6 +34,7 @@ class TreeNode(object):
     def get_left_child(self):
         return self.right
 
+
 class BinaryTree(object):
     def __init__(self):
         self.root = None
@@ -112,7 +113,7 @@ class BinaryTree(object):
         return node_list
 
     def create_minimum_tree(self, data_list):
-        "."
+        "create mimimum tree using divide-and-conquer method given data list."
         len_of_list = len(data_list)
         pivot_id = int(len_of_list / 2)
         self.insert_in_order(data_list[pivot_id])
@@ -123,7 +124,7 @@ class BinaryTree(object):
             self.insert_in_order(data_list[pivot_id-1])
 
     def create_depth_list(self, full_depth_dict, Node):
-        "."
+        "create depth list."
         if Node.left is not None:
             self.create_depth_list(full_depth_dict, Node.left)
         full_depth_dict[Node.depth].append(Node.data)
@@ -131,7 +132,7 @@ class BinaryTree(object):
             self.create_depth_list(full_depth_dict, Node.right)
 
     def compute_depth_list(self, Node=None):
-        "."
+        "return linear list of nodes which are in the same depth"
         if Node is None:
             Node = self.root
         depth_dict = defaultdict(lambda: [])
@@ -150,7 +151,7 @@ class BinaryTree(object):
                 self.count_max_depth(Node.right, max_depth_list)
 
     def is_balanced_tree(self, Node=None):
-        "."
+        "check whether balanced tree or not."
         if Node is None:
             Node = self.root
         max_depth_left = [Node.depth]
@@ -169,7 +170,7 @@ class BinaryTree(object):
         return True
 
     def is_bst(self):
-        "."
+        "check whether BST or not."
         node_data_list = self.in_order_traversal_values()
         lis = list(map(lambda x, y: x <= y, node_data_list,
                                             node_data_list[1:]))
@@ -182,7 +183,7 @@ class BinaryTree(object):
             return False
 
     def find_next_node(self, d):
-        "."
+        "return next node of given value."
         node_data_list = self.in_order_traversal_values()
         print(node_data_list)
         if d in node_data_list:
@@ -196,7 +197,7 @@ class BinaryTree(object):
             return None
 
     def find_ancester(self, d):
-        ""
+        "return list of ancesters of d."
         src_node = self.search(d)
         if src_node.parent is None:
             return []
@@ -207,7 +208,7 @@ class BinaryTree(object):
         return ancesters
 
     def list_possible_BST_array(self, Node=None):
-        ""
+        "return all possible arrays that can consist themselves tree."
         # print(self.data)
         if Node is None:
             Node = self.root
@@ -231,13 +232,13 @@ class BinaryTree(object):
         return possible_BST_array
 
     def get_random_node(self):
-        ""
+        "randomly obtain one node"
         random_id = np.random.randint(self.size)
         node_data_list = self.in_order_traversal_values()
         return self.search(node_data_list[random_id])
 
     def search_route_to_descendant(self, Node=None):
-        ""
+        "search route from given node to descendant."
         if Node is None:
             Node = self.root
         if Node.left is not None:
@@ -261,7 +262,7 @@ class BinaryTree(object):
         return possible_route
 
     def find_total_equal_route(self, value):
-        ""
+        "find the route whose total value is the same as give value."
         node_data_list = self.in_order_traversal()
         # print(node_data_list)
         matched_route = []
