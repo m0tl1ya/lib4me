@@ -4,7 +4,7 @@ import itertools
 
 
 def duplicate_permutation(iterable1, iterable2, r=None):
-    "c!/(a!*b!)"
+    """Compute duplicate permutation c!/(a!*b!)."""
     pool1 = tuple(iterable1)
     pool2 = tuple(iterable2)
     n = len(pool1) + len(pool2)
