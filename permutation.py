@@ -28,7 +28,10 @@ def duplicate_permutation(iterable1, iterable2, r=None):
 if __name__ == '__main__':
     lis = []
     lis += list(duplicate_permutation([4, 2, 5, 1], [8, 7, 9]))
+    print(len(lis))
     lis += list(duplicate_permutation([4, 2, 5, 1], []))
     for li in lis:
         print(li)
     print(len(lis))
+    for i in duplicate_permutation([4, 2, 5, 1], [8, 7, 9]):
+        print(i)
