@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+"""
+dynamic programming (bottom up)
+calculate the number of cases that you ascend a staircase with the stride of
+1 or 2 or 3 steps
+"""
+
 
 def triple_step(n):
     """Compute the number of cases of triple steps."""
