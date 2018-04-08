@@ -6,7 +6,7 @@ import numpy as np
 import functools
 from collections import defaultdict
 
-from permutation import duplicate_permutation
+from permutation import permutation_of_two_iterabele
 
 
 class TreeNode(object):
@@ -226,7 +226,8 @@ class BinaryTree(object):
         possible_BST_array = []
         for itr1 in left_possible_array:
             for itr2 in right_possible_array:
-                possible_BST_array += list(duplicate_permutation(itr1, itr2))
+                possible_BST_array += list(permutation_of_two_iterabele(itr1,
+                                                                        itr2))
         for i, itr in enumerate(possible_BST_array):
             possible_BST_array[i] = list([Node.data]) + itr
         return possible_BST_array

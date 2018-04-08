@@ -3,7 +3,7 @@
 import itertools
 
 
-def duplicate_permutation(iterable1, iterable2, r=None):
+def permutation_of_two_iterabele(iterable1, iterable2, r=None):
     """Compute duplicate permutation c!/(a!*b!)."""
     pool1 = tuple(iterable1)
     pool2 = tuple(iterable2)
@@ -26,12 +26,11 @@ def duplicate_permutation(iterable1, iterable2, r=None):
 
 
 if __name__ == '__main__':
-    lis = []
-    lis += list(duplicate_permutation([4, 2, 5, 1], [8, 7, 9]))
-    print(len(lis))
-    lis += list(duplicate_permutation([4, 2, 5, 1], []))
+    lis = list(permutation_of_two_iterabele([4, 2, 5, 1], [8, 7, 9]))
     for li in lis:
         print(li)
     print(len(lis))
-    for i in duplicate_permutation([4, 2, 5, 1], [8, 7, 9]):
-        print(i)
+    lis = list(permutation_of_two_iterabele([4, 2, 5, 1], [8]))
+    for li in lis:
+        print(li)
+    print(len(lis))

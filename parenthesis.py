@@ -32,7 +32,7 @@ def generate_possible_parenthesis(iterable1, iterable2, r=None):
 
 
 if __name__ == '__main__':
-    n = int(input())
+    n = 5  # int(input())
     lis = list(generate_possible_parenthesis(['(']*n, [')']*n))
     for l in lis:
         print(''.join(l))
