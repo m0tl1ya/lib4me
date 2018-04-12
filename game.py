@@ -211,6 +211,7 @@ class PlayOff(object):
         champion = self.final(finalist)
         print('Champion:{}'.format(champion.name))
 
+
 class Team(object):
     def __init__(self, name, pass_accuracy, pass_speed,
                  attack, defense, shoot_rate, save_rate):
