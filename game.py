@@ -81,7 +81,6 @@ class Game(object):
         self.opp.results[self.team.name].append(opp_point)
 
 
-
 class League(object):
     def __init__(self, group1, group2, group3, group4):
         self.group1 = group1

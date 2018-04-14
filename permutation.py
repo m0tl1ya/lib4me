@@ -6,7 +6,7 @@ import itertools
 def permutation_of_two_iterabele(iterable1, iterable2, r=None):
     """Compute permutation c!/(a!*b!).
 
-    Not consider repitition of each iterable.
+    Not consider repetition among iterables.
     """
     pool1 = tuple(iterable1)
     pool2 = tuple(iterable2)
@@ -31,7 +31,7 @@ def permutation_of_two_iterabele(iterable1, iterable2, r=None):
 def permutation_of_two_string(iterable1, iterable2, r=None):
     """Compute permutation c!/(a!*b!).
 
-    Not consider repitition of each iterable.
+    Not consider repetition among iterables.
     """
     pool1 = tuple(iterable1)
     pool2 = tuple(iterable2)
@@ -90,6 +90,21 @@ def permutate_string_dp(string):
         return result
 
 
+def permutate_sequential(iterable):
+    """Commpute permutation in list sequentially."""
+    result = []
+    for i, v in enumerate(iterable[0:-1]):
+        if i == 0:
+            result += list(permutation_of_two_iterabele(iterable[i],
+                                                        iterable[i+1]))
+        else:
+            tmp = []
+            for r in result:
+                tmp += list(permutation_of_two_iterabele(r, iterable[i+1]))
+            result = tmp
+    return result
+
+
 if __name__ == '__main__':
     lis = list(permutation_of_two_iterabele([4, 2, 5, 1], [8, 7, 9]))
     for li in lis:
@@ -101,3 +116,8 @@ if __name__ == '__main__':
         print(li)
     print(len(lis))
     print(permutate_string('abcd'))
+
+    lis = permutate_sequential(['aa', 'bb', 'cc'])
+    for li in lis:
+        print(li)
+    print(len(lis))
