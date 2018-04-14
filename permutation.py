@@ -58,6 +58,8 @@ def permutate_string(string):
     len_s = len(string)
     if len_s == 1:
         return [string]
+    elif len_s == 0:
+        return []
     else:
         result = []
         c = string[0]
@@ -80,6 +82,8 @@ def permutate_string_dp(string):
     len_s = len(string)
     if len_s == 1:
         return [string]
+    elif len_s == 0:
+        return []
     else:
         result = []
         c = string[0]
@@ -92,17 +96,46 @@ def permutate_string_dp(string):
 
 def permutate_sequential(iterable):
     """Commpute permutation in list sequentially."""
+    if len(iterable) == 1:
+        return iterable
     result = []
     for i, v in enumerate(iterable[0:-1]):
         if i == 0:
-            result += list(permutation_of_two_iterabele(iterable[i],
-                                                        iterable[i+1]))
+            result += list(permutation_of_two_string(iterable[i],
+                                                     iterable[i+1]))
         else:
             tmp = []
             for r in result:
-                tmp += list(permutation_of_two_iterabele(r, iterable[i+1]))
+                tmp += list(permutation_of_two_string(r, iterable[i+1]))
             result = tmp
     return result
+
+
+def permutate_string_with_repetition(string):
+    """Permutate string considering repetition."""
+    stack_single = []
+    repetitive_characters = []
+    for c in string:
+        count = string.count(c)
+        if count == 1:
+            stack_single.append(c)
+        else:
+            if c*count not in repetitive_characters:
+                repetitive_characters.append(c*count)
+    singles = ''.join(stack_single)
+    permutation_of_singles = permutate_string(singles)
+    permutation_of_repetition = permutate_sequential(repetitive_characters)
+    if permutation_of_singles != [] and permutation_of_repetition != []:
+        result = []
+        for s in permutation_of_singles:
+            for t in permutation_of_repetition:
+                result += list(permutation_of_two_string(s, t))
+        return result
+    else:
+        if permutation_of_singles != []:
+            return permutation_of_singles
+        else:
+            return permutation_of_repetition
 
 
 if __name__ == '__main__':
@@ -111,13 +144,30 @@ if __name__ == '__main__':
         print(li)
     print(len(lis))
     # lis = list(permutation_of_two_iterabele([4, 2, 5, 1], [8]))
+    print('\n')
     lis = list(permutation_of_two_string('abc', 'def'))
     for li in lis:
         print(li)
     print(len(lis))
-    print(permutate_string('abcd'))
+    print('\n')
 
-    lis = permutate_sequential(['aa', 'bb', 'cc'])
+    lis = permutate_string('abc')
+    for li in lis:
+        print(li)
+    print(len(lis))
+    print('\n')
+
+    lis = permutate_sequential(['aa', 'bbb', 'cc'])
+    for li in lis:
+        print(li)
+    print(len(lis))
+    print('\n')
+
+    lis = list(permutate_string_with_repetition('bbcereraa'))
+    print(len(lis))
+    print('\n')
+
+    lis = list(permutate_string_with_repetition('bbaac'))
     for li in lis:
         print(li)
     print(len(lis))
