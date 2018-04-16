@@ -94,19 +94,22 @@ def permutate_string_dp(string):
         return result
 
 
-def permutate_sequential(iterable):
-    """Commpute permutation in list sequentially."""
-    if len(iterable) == 1:
-        return iterable
+def permutate_sequential(string):
+    """Commpute permutation in list sequentially.
+
+    Use only for string
+    """
+    if len(string) == 1:
+        return string
     result = []
-    for i, v in enumerate(iterable[0:-1]):
+    for i, v in enumerate(string[0:-1]):
         if i == 0:
-            result += list(permutation_of_two_string(iterable[i],
-                                                     iterable[i+1]))
+            result += list(permutation_of_two_string(string[i],
+                                                     string[i+1]))
         else:
             tmp = []
             for r in result:
-                tmp += list(permutation_of_two_string(r, iterable[i+1]))
+                tmp += list(permutation_of_two_string(r, string[i+1]))
             result = tmp
     return result
 
